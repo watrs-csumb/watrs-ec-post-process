@@ -1,4 +1,11 @@
+import os
+import pandas as pd
+import numpy as np
+
 def get_field_name(raw_data_path):
+  '''
+  extracting the field name from a folder path for file naming
+  '''
   elements= raw_data_path.split('/')[-2].split('_')
   if len(elements)>=3:
     field_name = '_'.join(elements[:-1])
