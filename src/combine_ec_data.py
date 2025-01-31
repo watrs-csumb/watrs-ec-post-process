@@ -1,3 +1,11 @@
+def get_field_name(raw_data_path):
+  elements= raw_data_path.split('/')[-2].split('_')
+  if len(elements)>=3:
+    field_name = '_'.join(elements[:-1])
+  else:
+    field_name = elements[0]
+  return(field_name)
+  
 def check_folder(data_path, out_path):
   '''
   check if folders are present
