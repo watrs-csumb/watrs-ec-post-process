@@ -1,12 +1,14 @@
 # watrs_ec_processing
+This repository includes scripts used by the Water, Agriculture, Technology and Remote Sensing (WATRS) Lab at California State University Monterey Bay (CSUMB) to quality control and post-process eddy covariance data.
 
-# CSUMB EC-OpenET Processing Pipeline
-This pipeline is an end-to-end script that combines pre and post-processing steps to evaluate OpenET data for a given list of Eddy Covariance Sites.
-1.   Combine EC .dat files ([script](https://github.com/sciencebyAJ/watrs_ec_processing/blob/main/WATRS_COMBINE_EC_DATA.ipynb))
-2.   Apply PI Quality Flags script
-3.   Post-process EC data with fluxdata qaqc script
+# WATRS EC-OpenET Processing Pipeline
+The scripts provided here are meant to be run in series to combine outputs from Campbell Scientific data loggers running EasyFlux DL software.
+1.   Combine Ameriflux formated .dat files ([script](https://github.com/sciencebyAJ/watrs_ec_processing/blob/main/WATRS_COMBINE_EC_DATA.ipynb)).
+2.   Evaluate, quality control, and gap-fill combined data files script.
+3.   Post-process quality-controlled EC data with fluxdata qaqc script
 
 For more information on [fluxdata-qaqc](https://flux-data-qaqc.readthedocs.io/en/latest/install.html) see the link.
 
 # Meta Data Table of Available CSUMB Sites
+The scripts are set up to draw meta data information for an eddy covariance tower.
 * Edit the [csumb_field_meta Google Sheet](https://docs.google.com/spreadsheets/d/1cUHT0Rb0n39I0qk-bYY194spSWr7MNqkFX15PWnxXlI/edit?usp=sharing) to include all necesary information.
