@@ -11,6 +11,6 @@ For more information on [fluxdata-qaqc](https://flux-data-qaqc.readthedocs.io/en
 
 # Meta Data Table of Available CSUMB Sites
 The scripts are set up to draw meta data information for an eddy covariance tower.
-* Edit the [csumb_field_meta Google Sheet]([https://docs.google.com/spreadsheets/d/1cUHT0Rb0n39I0qk-bYY194spSWr7MNqkFX15PWnxXlI/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1fmik1-lOcGyLyLe6RmBseVzpIddQEU-9-KNh1p_4lpU/edit?usp=sharing)) to include all necesary information.
+* Edit the [csumb_field_meta Google Sheet]([https://docs.google.com/spreadsheets/d/1fmik1-lOcGyLyLe6RmBseVzpIddQEU-9-KNh1p_4lpU/edit?usp=sharing]) to include all necesary information.
 
 Contributions to this repository include WATRS lab members including: AJ Purdy, Ryan Solymar, Michael Biedebach
