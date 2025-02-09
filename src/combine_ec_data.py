@@ -91,12 +91,11 @@ def assign_datetime_index(df_in):
   return df_in
 
 
-def rolling_quantile_flagging(in_df, _var_ = 'LE',verbose=False):
+def rolling_quantile_flagging(in_df, _var_ = 'LE',verbose=False, timespan='30D'):
     '''
-    applies a rolling 30 day quantile filter to remove outlies not detected by the spike removal alogirthm
+    conservative rolling quantile filter for a determined window to remove outlies not detected by the spike removal alogirthm
     2.5 x the inter quartile range is applied to Q1 and Q3 to detect anomalous outliers
     '''
-    
     flag_id = _var_ + '_pi_flag'
     if flag_id in in_df.columns:
       if verbose ==True:
@@ -104,18 +103,28 @@ def rolling_quantile_flagging(in_df, _var_ = 'LE',verbose=False):
     else:
       print('creating '+flag_id)
       in_df[flag_id]='good'
-
+    
+    min_obs = int(48*int(timespan.split('D')[0])/4)
     df=in_df.copy()
-    df[_var_]= (np.array(pd.to_numeric(df[_var_], errors='coerce')))
+    
+    if _var_ in ['LE','H']:
+      df.loc[(df[_var_]>df['NETRAD'])&(df['NETRAD']>50),flag_id]='bad'
+
+    df[_var_+'temp']= (np.array(pd.to_numeric(df[_var_], errors='coerce')))
+    df.loc[df[_var_+'_pi_flag']=='bad',_var_+'temp']=np.nan
+    
     df.set_index('date_time',inplace=True)
     df = df[~df.index.duplicated(keep='first')]
-    df['IQR']=df[_var_].rolling('15D',min_periods=30).quantile(0.75)-df[_var_].rolling('30D',min_periods=30).quantile(0.25)
-    df['max']=df['IQR']*2.5+df[_var_].rolling('15D',min_periods=30).quantile(0.75)
-    df['min']=df[_var_].rolling('15D',min_periods=30).quantile(0.25)-df['IQR']*2.5
-    df.loc[df[_var_] > df['max'], flag_id] = 'bad'
-    df.loc[df[_var_] < df['min'], flag_id] = 'bad'
-    df.drop(['IQR','max','min'],inplace=True,axis=1)
+    df['IQR']=df[_var_+'temp'].rolling(timespan,min_periods=min_obs, center=True).quantile(0.75)-df[_var_+'temp'].rolling(timespan,min_periods=min_obs,center=True).quantile(0.25)
 
+    df['max']=df['IQR']*2.5+df[_var_+'temp'].rolling(timespan,min_periods=min_obs,center=True).quantile(0.75)
+    df['min']=df[_var_+'temp'].rolling(timespan,min_periods=min_obs,center=True).quantile(0.25)-df['IQR']*2.5
+
+    df.loc[df[_var_+'temp'] > df['max'], flag_id] = 'bad'
+    df.loc[df[_var_+'temp'] < df['min'], flag_id] = 'bad'
+
+    df.drop(['IQR','max','min',_var_+'temp'],inplace=True,axis=1)
+    print(timespan + ' rolling window applied for IQR filtering')
     # returns the dataframe without the min / max thresholds used to trim
     return df.reset_index()
 
