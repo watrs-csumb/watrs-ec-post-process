@@ -13,4 +13,7 @@ For more information on [fluxdata-qaqc](https://flux-data-qaqc.readthedocs.io/en
 The scripts are set up to draw meta data information for an eddy covariance tower.
 * Edit the [csumb_field_meta Google Sheet](https://docs.google.com/spreadsheets/d/1fmik1-lOcGyLyLe6RmBseVzpIddQEU-9-KNh1p_4lpU/edit?usp=sharing) to include all necesary information.
 
+# PI Flagging table with notes
+The scripts require a PI flagging table.
+* An example can be found [here](https://docs.google.com/spreadsheets/d/18cgmlfcnE9vQzkihyo3zWgqpbzG-EEce7tROzAs_OkI/edit?usp=sharing)
 Contributions to this repository include WATRS lab members including: AJ Purdy, Ryan Solymar, Michael Biedebach
