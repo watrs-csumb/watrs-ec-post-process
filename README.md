@@ -20,4 +20,8 @@ The scripts are set up to draw meta data information for an eddy covariance towe
 # PI Flagging table with notes
 The scripts require a PI flagging table.
 * An example can be found [here](https://docs.google.com/spreadsheets/d/18cgmlfcnE9vQzkihyo3zWgqpbzG-EEce7tROzAs_OkI/edit?usp=sharing)
+
+
+# Contributing team
 Contributions to this repository include WATRS lab members including: AJ Purdy, Ryan Solymar, Michael Biedebach
+These scripts relied on Open Source methods from the fluxdata-qaqc team and oneflux groups that were adopted to support near-real-time quality evaluation.
