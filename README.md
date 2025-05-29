@@ -9,7 +9,7 @@ The scripts provided here are meant to be run in series to combine outputs from 
 1.   Combine Ameriflux formated .dat files ([script](https://github.com/sciencebyAJ/watrs_ec_processing/blob/main/WATRS_COMBINE_EC_DATA.ipynb)).
 2.   Evaluate, quality control, and gap-fill combined data files ([script](https://github.com/sciencebyAJ/watrs_ec_processing/blob/main/WATRS_QC_EC_DATA.ipynb)).
 3.   Post-process quality-controlled EC data with fluxdata qaqc script. For more information on [fluxdata-qaqc](https://flux-data-qaqc.readthedocs.io/en/latest/install.html) see the link.
-4.   Generate footprints for each field-season using [Kljun Flux Footprint Prediction](https://footprint.kljun.net/) model 
+4.   Generate footprints for each field-season using our [footprints repository](https://github.com/watrs-csumb/footprints) that was developed from the [Kljun Flux Footprint Prediction](https://footprint.kljun.net/) model 
 
 Additionally, our team uses the above scripts to generate figures for weekly tower reports
 1.  Plotting half-hourly and daily SEB values [script](link to script)
